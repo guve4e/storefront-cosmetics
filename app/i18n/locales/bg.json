@@ -1,0 +1,49 @@
+{
+  "science": {
+    "badge": "НАУКАТА ЗАД CRYSTAL PURE™",
+    "title": "Създадени според нуждите на кожата, не според модата.",
+    "subtitle": "Всяка формула има ясна роля в една цялостна skincare рутина.",
+    "signals": {
+      "glow": {
+        "title": "Сияние",
+        "formula": "Vitamin C",
+        "description": "По-свеж вид, енергия и по-равномерен тен."
+      },
+      "hydration": {
+        "title": "Хидратация",
+        "formula": "Hydrating Serum",
+        "description": "Ежедневен комфорт, задържане на влага и подкрепа на кожната бариера."
+      },
+      "plump": {
+        "title": "Плътност",
+        "formula": "Hyaluronic Acid",
+        "description": "Glass-skin хидратация и по-гладка текстура."
+      },
+      "repair": {
+        "title": "Възстановяване",
+        "formula": "Intense Repair",
+        "description": "Нощна грижа, възстановяване и anti-wrinkle подкрепа."
+      },
+      "calm": {
+        "title": "Успокояване",
+        "formula": "Soothing Serum",
+        "description": "Подкрепа при зачервяване и по-мека кожна бариера."
+      },
+      "firmness": {
+        "title": "Стегнатост",
+        "formula": "Collagen Builder",
+        "description": "Еластичност, структура и грижа за по-стегнат вид."
+      },
+      "youth": {
+        "title": "Младост",
+        "formula": "Anti-Aging Serum",
+        "description": "Подкрепа за здравословно стареене и по-сияен вид."
+      },
+      "radiance": {
+        "title": "Блясък",
+        "formula": "Brightening Serum",
+        "description": "Яснота, светлина и рафиниран glow ефект."
+      }
+    }
+  }
+}
