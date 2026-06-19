@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@pinia/nuxt', '@nuxtjs/i18n'],
   devServer: {
-    port: 3001,
+    port: 3101,
   },
   css: ['~/assets/css/main.css'],
   i18n: {
