@@ -1,7 +1,77 @@
 {
   "science": {
     "badge": "CRYSTAL PURE™ SCIENCE",
-    "title": "Designed around signals, not trends.",
-    "subtitle": "Every formula has a clear role inside a complete skincare ritual."
+    "title": "Designed around skin signals, not trends.",
+    "subtitle": "Every serum has a precise role inside a complete skincare ritual.",
+    "signals": {
+      "glow": {
+        "title": "Glow",
+        "formula": "Vitamin C",
+        "description": "Freshness, visible energy and a more even-looking tone."
+      },
+      "hydration": {
+        "title": "Hydration",
+        "formula": "Hydrating Serum",
+        "description": "Daily comfort, moisture support and barrier care."
+      },
+      "plump": {
+        "title": "Plumpness",
+        "formula": "Hyaluronic Acid",
+        "description": "Glass-skin hydration and smoother-looking texture."
+      },
+      "repair": {
+        "title": "Repair",
+        "formula": "Intense Repair",
+        "description": "Night care for recovery, comfort and wrinkle-focused support."
+      },
+      "calm": {
+        "title": "Calm",
+        "formula": "Soothing Serum",
+        "description": "Support for redness-prone skin and a softer-feeling barrier."
+      },
+      "firmness": {
+        "title": "Firmness",
+        "formula": "Collagen Builder",
+        "description": "Elasticity, structure and care for a firmer-looking appearance."
+      },
+      "youth": {
+        "title": "Youth",
+        "formula": "Anti-Aging Serum",
+        "description": "Support for graceful aging and a healthier-looking glow."
+      },
+      "radiance": {
+        "title": "Radiance",
+        "formula": "Brightening Serum",
+        "description": "Clarity, light and a refined luminous finish."
+      }
+    }
+  },
+  "auroraRoutine": {
+    "badge": "AURORA ROUTINE",
+    "title": "Your skin ritual, composed intelligently.",
+    "subtitle": "Aurora reads skin type, concerns, budget and active promotions to build a focused routine instead of showing random products.",
+    "profile": {
+      "dry": "Dry",
+      "sensitive": "Sensitive",
+      "redness": "Redness",
+      "budget": "Budget €130"
+    },
+    "selectedBy": "Selected by Aurora",
+    "routineTitle": "Barrier-first routine",
+    "loading": "Building routine...",
+    "promo": "Promo",
+    "total": "Routine total",
+    "fallback": "Selected because it matches your skin profile.",
+    "roles": {
+      "barrier-comfort": "Barrier Comfort",
+      "hydration": "Hydration",
+      "treatment": "Treatment",
+      "support": "Support"
+    },
+    "reasons": {
+      "dry_sensitive_redness": "Chosen first because your profile shows dry, sensitive skin with redness.",
+      "hydration_support": "Adds hydration support without fighting the calming step.",
+      "profile_match": "Selected because it matches your skin profile."
+    }
   }
 }

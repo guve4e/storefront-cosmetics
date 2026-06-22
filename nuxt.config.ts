@@ -6,6 +6,11 @@ export default defineNuxtConfig({
     port: 3101,
   },
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.COMMERCE_CORE_API_BASE || 'http://localhost:3100',
+    },
+  },
   i18n: {
     defaultLocale: 'en',
     locales: [
