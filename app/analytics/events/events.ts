@@ -1,0 +1,16 @@
+export enum AnalyticsEvent {
+  PageView = 'page_view',
+  ProductView = 'product_view',
+  AddToCart = 'add_to_cart',
+  RemoveFromCart = 'remove_from_cart',
+  CartView = 'cart_view',
+  CheckoutStarted = 'checkout_started',
+  DeliverySelected = 'delivery_selected',
+  PaymentSelected = 'payment_selected',
+  CheckoutReview = 'checkout_review',
+  OrderCreated = 'order_created',
+  OrderCompleted = 'order_completed',
+  AuroraStarted = 'aurora_started',
+  AuroraRecommendation = 'aurora_recommendation',
+  AuroraAddToCart = 'aurora_add_to_cart',
+}
