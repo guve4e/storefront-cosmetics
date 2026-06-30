@@ -5,6 +5,7 @@ import { ConsoleAnalyticsProvider } from '../analytics/providers/console.provide
 import { DebugStorageAnalyticsProvider } from '../analytics/providers/debug-storage.provider'
 import { GA4AnalyticsProvider } from '../analytics/providers/ga4.provider'
 import { MetaPixelAnalyticsProvider } from '../analytics/providers/meta-pixel.provider'
+import { TikTokPixelAnalyticsProvider } from '../analytics/providers/tiktok-pixel.provider'
 
 function installGA4(measurementId: string) {
   if (!measurementId || !import.meta.client) return
@@ -44,13 +45,44 @@ function installMetaPixel(pixelId: string) {
   document.head.appendChild(script)
 }
 
+function installTikTokPixel(pixelId: string) {
+  if (!pixelId || !import.meta.client) return
+
+  window.ttq = window.ttq || { queue: [] }
+
+  window.ttq.load = function load(id: string) {
+    window.ttq?.queue?.push(['load', id])
+  }
+
+  window.ttq.page = function page() {
+    window.ttq?.queue?.push(['page'])
+  }
+
+  window.ttq.track = function track(event: string, params?: Record<string, unknown>) {
+    window.ttq?.queue?.push(['track', event, params])
+  }
+
+  window.ttq.identify = function identify(params: Record<string, unknown>) {
+    window.ttq?.queue?.push(['identify', params])
+  }
+
+  window.ttq.load(pixelId)
+
+  const script = document.createElement('script')
+  script.async = true
+  script.src = 'https://analytics.tiktok.com/i18n/pixel/events.js'
+  document.head.appendChild(script)
+}
+
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
   const ga4MeasurementId = String(config.public.ga4MeasurementId || '')
   const metaPixelId = String(config.public.metaPixelId || '')
+  const tiktokPixelId = String(config.public.tiktokPixelId || '')
 
   installGA4(ga4MeasurementId)
   installMetaPixel(metaPixelId)
+  installTikTokPixel(tiktokPixelId)
 
   const providers = [
     new ConsoleAnalyticsProvider(),
@@ -63,6 +95,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   if (metaPixelId) {
     providers.push(new MetaPixelAnalyticsProvider(metaPixelId))
+  }
+
+  if (tiktokPixelId) {
+    providers.push(new TikTokPixelAnalyticsProvider(tiktokPixelId))
   }
 
   const service = new AnalyticsService(providers)

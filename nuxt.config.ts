@@ -4,6 +4,7 @@ export default defineNuxtConfig({
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3001',
       ga4MeasurementId: process.env.NUXT_PUBLIC_GA4_MEASUREMENT_ID || '',
       metaPixelId: process.env.NUXT_PUBLIC_META_PIXEL_ID || '',
+      tiktokPixelId: process.env.NUXT_PUBLIC_TIKTOK_PIXEL_ID || '',
     },
   },
   compatibilityDate: '2025-07-15',
