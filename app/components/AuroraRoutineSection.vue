@@ -9,10 +9,15 @@
         </p>
 
         <div class="routine-profile">
-          <span>{{ t('auroraRoutine.profile.dry') }}</span>
-          <span>{{ t('auroraRoutine.profile.sensitive') }}</span>
-          <span>{{ t('auroraRoutine.profile.redness') }}</span>
-          <span>{{ t('auroraRoutine.profile.budget') }}</span>
+          <span v-for="skinType in aurora.skinTypes" :key="`skin-${skinType}`">
+            {{ labelForSkinType(skinType) }}
+          </span>
+
+          <span v-for="concern in aurora.concerns" :key="`concern-${concern}`">
+            {{ labelForConcern(concern) }}
+          </span>
+
+          <span>Budget {{ formatMoney(aurora.budget) }}</span>
         </div>
       </div>
 
@@ -25,21 +30,27 @@
           <strong>{{ totalLabel }}</strong>
         </div>
 
-        <div v-if="pending" class="routine-loading">
+        <div v-if="data?.headline" class="aurora-message">
+          <div class="aurora-name">Aurora</div>
+          <p>{{ t(`auroraRoutine.headlines.${data.headline}`) }}</p>
+        </div>
+
+        <div v-else-if="pending" class="routine-loading">
           {{ t('auroraRoutine.loading') }}
         </div>
 
-        <div v-else class="routine-list">
+        <div class="routine-report-list">
           <article
             v-for="(item, index) in routine"
             :key="item.id"
-            class="routine-item"
+            class="routine-report-item"
           >
-            <div class="routine-index">
-              {{ index + 1 }}
+            <div class="routine-step">
+              <small>{{ index === 0 ? t('auroraRoutine.morning') : t('auroraRoutine.night') }}</small>
+              <div class="routine-number">{{ index + 1 }}</div>
             </div>
 
-            <div class="routine-main">
+            <div class="routine-report-main">
               <div class="routine-line">
                 <span class="routine-role">{{ roleLabel(item.routineRole) }}</span>
                 <span v-if="isPromo(item)" class="promo-badge">{{ t('auroraRoutine.promo') }}</span>
@@ -47,15 +58,6 @@
 
               <h3>{{ item.name }}</h3>
               <p>{{ humanReason(item) }}</p>
-
-              <div class="benefit-row">
-                <span
-                  v-for="benefit in item.benefits?.slice(0, 3)"
-                  :key="benefit.slug"
-                >
-                  {{ benefit.name }}
-                </span>
-              </div>
             </div>
 
             <div class="routine-price">
@@ -68,35 +70,100 @@
         </div>
 
         <div class="routine-footer">
-          <span>{{ t('auroraRoutine.total') }}</span>
-          <strong>{{ totalLabel }}</strong>
+          <div>
+            <small>{{ t('auroraRoutine.complete') }}</small>
+            <div>{{ routine.length }} {{ t('auroraRoutine.products') }}</div>
+          </div>
+
+          <div>
+            <strong>{{ totalLabel }}</strong>
+          </div>
         </div>
+
+        <button class="routine-button" @click="addRoutine">
+          {{ t('auroraRoutine.addRoutine') }} • {{ totalLabel }}
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+const { currency, formatMoney } = useStoreCurrency()
 const { t } = useI18n()
 
-const testCustomerId = '4e3cbef1-cb25-4dea-973c-80ba64534999'
+const aurora = useAuroraStore()
+const cart = useCartStore()
 
-const { data, pending } = await useFetch(
-  `/api/aurora/recommendations/customer/${testCustomerId}/routine`,
+const routineBudget = computed(() => aurora.budget)
+const routineSkinTypes = computed(() => aurora.skinTypes)
+const routineConcerns = computed(() => aurora.concerns)
+const routineRequestVersion = computed(() => aurora.routineRequestVersion)
+
+const { data, pending } = await useAsyncData(
+  'aurora-routine-preview',
+  () =>
+    $fetch('/api/aurora/recommendations/routine-preview', {
+      method: 'POST',
+      body: {
+        skinTypes: routineSkinTypes.value,
+        concerns: routineConcerns.value,
+        currency: currency.value,
+        maxTotal: routineBudget.value,
+        limit: 2,
+      },
+    }),
   {
-    query: {
-      currency: 'EUR',
-      maxTotal: 130,
-      limit: 2,
-    },
+    watch: [routineRequestVersion],
   },
 )
 
 const routine = computed(() => data.value?.products ?? [])
 
 const totalLabel = computed(() =>
-  data.value ? `€${data.value.total}` : 'Aurora'
+  data.value ? formatMoney(data.value.total) : 'Aurora'
 )
+
+
+function labelForSkinType(value: string) {
+  const labels: Record<string, string> = {
+    dry: t('auroraRoutine.profile.dry'),
+    sensitive: t('auroraRoutine.profile.sensitive'),
+    combination: 'Combination',
+    oily: 'Oily',
+  }
+
+  return labels[value] ?? value
+}
+
+function labelForConcern(value: string) {
+  const labels: Record<string, string> = {
+    redness: t('auroraRoutine.profile.redness'),
+    dryness: 'Dryness',
+    'fine-lines': 'Fine lines',
+    pigmentation: 'Pigmentation',
+  }
+
+  return labels[value] ?? value
+}
+
+
+function addRoutine() {
+  for (const item of routine.value) {
+    if (!item.primaryVariant || !item.price) {
+      continue
+    }
+
+    cart.add({
+      variantId: item.primaryVariant.id,
+      slug: item.slug,
+      name: item.name,
+      image: `/images/products/${item.slug}/cart.png`,
+      price: item.price.finalPrice,
+      quantity: 1,
+    })
+  }
+}
 
 function isPromo(item: any) {
   return item.price?.source === 'promotion'

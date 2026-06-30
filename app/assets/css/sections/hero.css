@@ -1,0 +1,20 @@
+.hero {
+  min-height: unset !important;
+  padding-bottom: 0 !important;
+}
+
+.hero-grid {
+  padding-bottom: 3rem !important;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    padding-bottom: 3.5rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-grid {
+    padding-bottom: 2.5rem !important;
+  }
+}

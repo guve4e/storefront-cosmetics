@@ -11,7 +11,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   overflow: hidden;
   background:
     radial-gradient(circle at 20% 10%, rgba(255, 182, 218, .55), transparent 32%),
@@ -98,7 +98,7 @@ nav { display: flex; gap: 34px; color: #695578; font-size: 14px; }
   z-index: 1;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 45px 40px 90px;
+  padding: 35px 40px 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 70px;
@@ -1031,4 +1031,106 @@ nav { display: flex; gap: 34px; color: #695578; font-size: 14px; }
 .routine-footer strong {
   color: #111827;
   font-size: 1.5rem;
+}
+
+.aurora-message {
+  margin: 0 0 1rem;
+  padding: 1.2rem 1.35rem;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.aurora-name {
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  color: rgba(20, 28, 38, 0.45);
+}
+
+.aurora-message p {
+  margin: 0;
+  color: rgba(20, 28, 38, 0.72);
+  line-height: 1.65;
+}
+
+.routine-button{
+  width:100%;
+  margin-top:1.5rem;
+  padding:1rem;
+  border:none;
+  border-radius:18px;
+  background:#20142f;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.routine-subtitle{
+  color:rgba(20,28,38,.55);
+  margin-top:.25rem;
+  margin-bottom:.75rem;
+}
+
+.routine-number{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#0f172a;
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:1.2rem;
+  font-weight:700;
+}
+.routine-report-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.routine-report-item {
+  display: grid;
+  grid-template-columns: 74px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(255,255,255,0.82);
+}
+
+.routine-step small {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.62rem;
+  color: rgba(20,28,38,0.45);
+}
+
+.routine-report-main h3 {
+  margin: 0.35rem 0;
+  font-size: 1.15rem;
+}
+
+.routine-report-main p {
+  margin: 0;
+  color: rgba(20,28,38,0.6);
+  line-height: 1.45;
+}
+
+@media (max-width: 700px) {
+  .routine-report-item {
+    grid-template-columns: 1fr;
+  }
+
+  .routine-price {
+    text-align: left;
+    align-items: flex-start;
+  }
 }

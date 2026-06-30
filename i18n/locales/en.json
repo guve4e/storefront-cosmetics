@@ -72,6 +72,15 @@
       "dry_sensitive_redness": "Chosen first because your profile shows dry, sensitive skin with redness.",
       "hydration_support": "Adds hydration support without fighting the calming step.",
       "profile_match": "Selected because it matches your skin profile."
-    }
+    },
+    "headlines": {
+      "calming_routine": "Because your skin is dry and sensitive, I built a calming routine focused on barrier support.",
+      "balanced_routine": "I selected products that complement each other and fit your skin profile."
+    },
+    "morning": "Morning",
+    "night": "Night",
+    "complete": "Routine Complete",
+    "products": "products",
+    "addRoutine": "Add Entire Routine"
   }
 }
