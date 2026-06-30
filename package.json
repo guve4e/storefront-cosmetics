@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "test:unit": "npx vitest run tests/unit",
+    "test:quality": "npm run build && npm run test:unit && npm run test:e2e"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.4.0",
