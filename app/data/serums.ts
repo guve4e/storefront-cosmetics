@@ -2,8 +2,8 @@ export const serums = [
   {
     slug: 'vitamin-c',
     images: {
-      card: '/images/products/vitamin-c/card.jpg',
-      hero: '/images/products/vitamin-c/hero.jpg',
+      card: '/images/products/vitamin-c/card.webp',
+      hero: '/images/products/vitamin-c/hero.webp',
       cart: '/images/products/vitamin-c/cart.png',
     },
     signal: 'Glow',
@@ -38,8 +38,8 @@ export const serums = [
   {
     slug: 'hydrating',
     images: {
-      card: '/images/products/hydrating/card.jpg',
-      hero: '/images/products/hydrating/hero.jpg',
+      card: '/images/products/hydrating/card.webp',
+      hero: '/images/products/hydrating/hero.webp',
       cart: '/images/products/hydrating/cart.png',
     },
     signal: 'Hydration',
@@ -74,8 +74,8 @@ export const serums = [
   {
     slug: 'hyaluronic',
     images: {
-      card: '/images/products/hyaluronic/card.jpg',
-      hero: '/images/products/hyaluronic/hero.jpg',
+      card: '/images/products/hyaluronic/card.webp',
+      hero: '/images/products/hyaluronic/hero.webp',
       cart: '/images/products/hyaluronic/cart.png',
     },
     signal: 'Plump',
@@ -110,8 +110,8 @@ export const serums = [
   {
     slug: 'repair',
     images: {
-      card: '/images/products/repair/card.jpg',
-      hero: '/images/products/repair/hero.jpg',
+      card: '/images/products/repair/card.webp',
+      hero: '/images/products/repair/hero.webp',
       cart: '/images/products/repair/cart.png',
     },
     signal: 'Repair',
@@ -146,8 +146,8 @@ export const serums = [
   {
     slug: 'soothing',
     images: {
-      card: '/images/products/soothing/card.jpg',
-      hero: '/images/products/soothing/hero.jpg',
+      card: '/images/products/soothing/card.webp',
+      hero: '/images/products/soothing/hero.webp',
       cart: '/images/products/soothing/cart.png',
     },
     signal: 'Calm',
@@ -182,8 +182,8 @@ export const serums = [
   {
     slug: 'collagen',
     images: {
-      card: '/images/products/collagen/card.jpg',
-      hero: '/images/products/collagen/hero.jpg',
+      card: '/images/products/collagen/card.webp',
+      hero: '/images/products/collagen/hero.webp',
       cart: '/images/products/collagen/cart.png',
     },
     signal: 'Firmness',
@@ -218,8 +218,8 @@ export const serums = [
   {
     slug: 'anti-aging',
     images: {
-      card: '/images/products/anti-aging/card.jpg',
-      hero: '/images/products/anti-aging/hero.jpg',
+      card: '/images/products/anti-aging/card.webp',
+      hero: '/images/products/anti-aging/hero.webp',
       cart: '/images/products/anti-aging/cart.png',
     },
     signal: 'Youth',
@@ -254,8 +254,8 @@ export const serums = [
   {
     slug: 'brightening',
     images: {
-      card: '/images/products/brightening/card.jpg',
-      hero: '/images/products/brightening/hero.jpg',
+      card: '/images/products/brightening/card.webp',
+      hero: '/images/products/brightening/hero.webp',
       cart: '/images/products/brightening/cart.png',
     },
     signal: 'Radiance',

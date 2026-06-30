@@ -43,7 +43,7 @@
 
       <div class="hero-visual">
         <div class="hero-glass">
-          <img src="/images/serums-hero.jpg" alt="Crystal Pure rainbow serums">
+          <img src="/images/serums-hero.webp" alt="Crystal Pure rainbow serums">
         </div>
         <div class="vertical-label">CRYSTAL PURE</div>
       </div>
