@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('analytics emits product-cart funnel events', async ({ page }) => {
   await page.goto('/')

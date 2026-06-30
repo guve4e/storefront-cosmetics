@@ -6,6 +6,7 @@ import { DebugStorageAnalyticsProvider } from '../analytics/providers/debug-stor
 import { GA4AnalyticsProvider } from '../analytics/providers/ga4.provider'
 import { MetaPixelAnalyticsProvider } from '../analytics/providers/meta-pixel.provider'
 import { TikTokPixelAnalyticsProvider } from '../analytics/providers/tiktok-pixel.provider'
+import { hasAnalyticsConsent } from '../analytics/consent/analytics-consent'
 
 function installGA4(measurementId: string) {
   if (!measurementId || !import.meta.client) return
@@ -80,24 +81,28 @@ export default defineNuxtPlugin((nuxtApp) => {
   const metaPixelId = String(config.public.metaPixelId || '')
   const tiktokPixelId = String(config.public.tiktokPixelId || '')
 
-  installGA4(ga4MeasurementId)
-  installMetaPixel(metaPixelId)
-  installTikTokPixel(tiktokPixelId)
+  const marketingConsent = hasAnalyticsConsent()
+
+  if (marketingConsent) {
+    installGA4(ga4MeasurementId)
+    installMetaPixel(metaPixelId)
+    installTikTokPixel(tiktokPixelId)
+  }
 
   const providers = [
     new ConsoleAnalyticsProvider(),
     new DebugStorageAnalyticsProvider(),
   ]
 
-  if (ga4MeasurementId) {
+  if (marketingConsent && ga4MeasurementId) {
     providers.push(new GA4AnalyticsProvider(ga4MeasurementId))
   }
 
-  if (metaPixelId) {
+  if (marketingConsent && metaPixelId) {
     providers.push(new MetaPixelAnalyticsProvider(metaPixelId))
   }
 
-  if (tiktokPixelId) {
+  if (marketingConsent && tiktokPixelId) {
     providers.push(new TikTokPixelAnalyticsProvider(tiktokPixelId))
   }
 

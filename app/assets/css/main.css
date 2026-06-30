@@ -116,7 +116,7 @@ nav { display: flex; gap: 34px; color: #695578; font-size: 14px; }
 }
 
 .eyebrow.soft {
-  color: #b274aa;
+  color: #8f4f86;
 }
 
 .hero h1 {
@@ -318,7 +318,7 @@ nav { display: flex; gap: 34px; color: #695578; font-size: 14px; }
 .violet { background: linear-gradient(135deg, #c4a0ff, #a78bfa, #818cf8); }
 
 .type {
-  color: #b274aa;
+  color: #8f4f86;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: .25em;

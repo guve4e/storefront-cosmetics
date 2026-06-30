@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('sitemap exposes canonical product URLs', async ({ page }) => {
   const response = await page.goto('/sitemap.xml')
