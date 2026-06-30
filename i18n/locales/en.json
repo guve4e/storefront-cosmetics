@@ -82,5 +82,11 @@
     "complete": "Routine Complete",
     "products": "products",
     "addRoutine": "Add Entire Routine"
+  },
+  "analyticsConsent": {
+    "title": "Analytics cookies",
+    "description": "We use analytics to understand how visitors use AVA and improve the shopping experience.",
+    "accept": "Accept",
+    "reject": "Reject"
   }
 }

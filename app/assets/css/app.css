@@ -488,3 +488,21 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* Accessibility: sale compare price must meet WCAG AA contrast */
+.price-stack .compare-price,
+.compare-price {
+  color: #5f5668;
+}
+
+/* Accessibility hard override: sale compare price contrast */
+.compare-price {
+  color: #4f4758 !important;
+}
+
+/* Accessibility hard override: compare price contrast with inherited opacity removed */
+.price-stack .compare-price,
+.compare-price {
+  color: #3f3648 !important;
+  opacity: 1 !important;
+}
