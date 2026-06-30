@@ -21,12 +21,13 @@ export class GA4AnalyticsProvider implements AnalyticsProvider {
       session_id: event.context.sessionId,
       locale: event.context.locale,
       currency: event.context.currency,
+      event_version: event.version,
     })
   }
 
   track(event: AnalyticsEnvelope) {
     this.send(event.event, {
-      ...event.payload,
+      ...(event.payload as Record<string, unknown> | undefined),
       event_category: event.category,
       event_version: event.version,
       session_id: event.context.sessionId,
@@ -38,13 +39,17 @@ export class GA4AnalyticsProvider implements AnalyticsProvider {
 
   identify(user: IdentifyPayload) {
     if (!user.id || !window.gtag) return
-    window.gtag('set', { user_id: user.id })
+
+    window.gtag('set', {
+      user_id: user.id,
+    })
   }
 
   reset() {}
 
   private send(eventName: string, params: Record<string, unknown>) {
     if (!this.measurementId || !window.gtag) return
+
     window.gtag('event', eventName, params)
   }
 }
